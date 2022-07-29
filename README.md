@@ -18,6 +18,7 @@ python botTelegram.py SEU_TOKEN_AQUI
 - Versão do telegram: 13.13
 
 ```
+conda create --name chatbot
 pip install python-telegram-bot
 
 ```
