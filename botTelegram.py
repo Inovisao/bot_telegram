@@ -2,24 +2,29 @@
 Exemplo de um chatbot para Telegram
 
 Código disponibilizado por Karan Batra
-Pequenas alterações feitas por Hemerson Pistori (pistori@ucdb.br)
+Alterações feitas por Hemerson Pistori (pistori@ucdb.br), principalmente a parte
+que trata de imagens.
 
 Como executar:
 python botTelegram.py COPIE_AQUI_SEU_TOKEN
 
-Funcionalidade: apenas repete as mensagens que alguém envia para o seu chatbot
+Funcionalidade: repete as mensagens de texto que alguém envia para o seu chatbot e devolve duas estatísticas das imagens quando o usuário manda uma imagem.
 """
 
+from PIL import Image,ImageStat
+import os
+import logging
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import sys
 
 # Lê o token como parâmetro na linha de comando
 MEU_TOKEN=sys.argv[1]
 
+# Pasta para imagens enviadas pelo usuário
+pasta_imgs='./Telegram_Imagens_Recebidas/' 
+
 print('Carregando BOT usando o token ',MEU_TOKEN)
 
-import logging
-
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -30,20 +35,50 @@ logger = logging.getLogger(__name__)
 
 # Define algumas respostas padrão para alguns comandos
 
-# Resposta para o comando /start
-def start(update, context):
-    update.message.reply_text('Olá, já comecei, é só escrever qualquer coisa')
-
-
-# Resposta para o comando /help
-def help(update, context):
-    update.message.reply_text('Eu só sei repetir o que me falam')
-
-
+# Resposta para quando o usuário digita um texto.
 # Apenas responde com o mesmo texto que o usuário entrou
 def echo(update, context):
     resposta='Você disse: '+update.message.text+' ?'
     update.message.reply_text(resposta)
+
+# Resposta para quando o usuário mandar uma imagem
+def processa_imagem(update, context):
+    
+    # Entra na pasta onde ficarão as imagens 
+    os.chdir(pasta_imgs)
+    
+    # Pega o identificador da última imagem enviada 
+    identificador = update.message.photo[-1].file_id
+    
+    # Pega o arquivo
+    arquivo = context.bot.get_file(identificador)
+    
+    # Baixa o arquivo
+    nome_imagem = arquivo.download()
+    print('Processando arquivo ',pasta_imgs+nome_imagem)
+    
+    # Abre o arquivo como sendo uma imagem usando o PIL
+    imagem = Image.open(nome_imagem).convert('RGB')
+    
+    # Pega algumas estatísticas dos valores dos pixels da imagem
+    stat = ImageStat.Stat(imagem)
+    
+    # Devolve para o usuário uma mensagem de texto com duas
+    # das estatísticas calculadas
+    update.message.reply_text(f'Estatísticas da Imagem: valor médio dos pixels no canais R, G e B = {stat.mean}, desvio padrão = {stat.stddev}')
+
+
+
+# Resposta para o comando /start
+def start(update, context):
+    update.message.reply_text('Olá, já comecei, é só escrever qualquer coisa ou mandar uma imagem')
+
+
+# Resposta para o comando /help
+def help(update, context):
+    update.message.reply_text('Eu só sei repetir o que me falam por enquanto')
+
+
 
 # Salva as mensagens de erro
 def error(update, context):
@@ -65,8 +100,15 @@ def main():
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
 
-    # Define a função 
+    # Define a função que vai tratar os textos
     dp.add_handler(MessageHandler(Filters.text, echo))
+
+    # Cria pasta para as imagens enviadas pelo usuário
+    os.makedirs('./Telegram_Imagens_Recebidas',exist_ok=True)
+
+    # Define a função que vai tratar as imagens
+    dp.add_handler(MessageHandler(Filters.photo, processa_imagem))
+
 
     # Define a função que vai tratar os erros
     dp.add_error_handler(error)

@@ -19,7 +19,7 @@ python botTelegram.py SEU_TOKEN_AQUI
 
 ```
 conda create --name chatbot
-pip install python-telegram-bot
+pip install python-telegram-bot pillow
 
 ```
 
