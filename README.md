@@ -1,6 +1,6 @@
-# botTelegram
+# Exemplos botTelegram
 
-Descrição: chatbot simples para interação pelo telegram, na versão atual apenas repete o que o usuário escreve na forma de pergunta.
+Descrição: Exemplos de códigos em python que funcionam como chatbots para o telegram.
 
 Autor: Hemerson Pistori (pistori@ucdb.br)
 
@@ -8,7 +8,7 @@ Exemplos de uso:
 
 ```
 python botTelegram.py SEU_TOKEN_AQUI 
-
+python coletaImagens.py SEU_TOKEN_AQUI 
 ```
 
 ### Dependências 
@@ -20,7 +20,7 @@ python botTelegram.py SEU_TOKEN_AQUI
 ```
 conda create --name chatbot
 pip install python-telegram-bot pillow
-
+conda activate chatbot
 ```
 
 ### Gerando o chatbot no Telegram
@@ -29,12 +29,5 @@ pip install python-telegram-bot pillow
 - Mande a mensagem /newbot para o @botfather e vá
 respondendo as perguntas. 
 - Anote o token que ele vai gerar para você e o use como primeiro parâmetro quando for executar o programa botTelegram.py
-
-### Executando
-
-```
-conda activate chatbot
-python botTelegram.py SEU_TOKEN_AQUI
-```
 
 

@@ -2,8 +2,7 @@
 Exemplo de um chatbot para Telegram
 
 Código disponibilizado por Karan Batra
-Alterações feitas por Hemerson Pistori (pistori@ucdb.br), principalmente a parte
-que trata de imagens.
+Alterações feitas por Hemerson Pistori (pistori@ucdb.br), principalmente a parte que trata de imagens.
 
 Como executar:
 python botTelegram.py COPIE_AQUI_SEU_TOKEN
@@ -18,6 +17,9 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import sys
 
 # Lê o token como parâmetro na linha de comando
+# Você pode também trocar diretamente aqui sys.argv[1] pelo
+# seu token no telegram (ver README.md para saber como
+# criar seu bot no telegram)
 MEU_TOKEN=sys.argv[1]
 
 # Pasta para imagens enviadas pelo usuário
