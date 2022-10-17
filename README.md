@@ -73,4 +73,12 @@ python coletaImagens.py SEU_TOKEN_AQUI
 python botTelegram.py SEU_TOKEN_AQUI 
 ```
 
+### Próximos passos
 
+Depois de coletar suas imagens para treinar uma inteligência artificial você pode estudar e utilizar os códigos disponíveis no link abaixo para treinar a sua inteligência artificial (use o exemplo_v4):
+
+http://git.inovisao.ucdb.br/inovisao/exemplos_pytorch
+
+E depois de treinar a IA você pode embuti-la em uma placa Raspberry usando as orientações e os códigos disponíveis neste link: 
+
+http://git.inovisao.ucdb.br/inovisao/raspberry_camera
