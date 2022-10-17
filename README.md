@@ -25,12 +25,18 @@ respondendo às perguntas que ele fizer.
 
 - Abra o terminal do Linux usando CTRL+ALT+T
 - Verifique os ambientes conda já instalados usando o comando
-abaixo (se já tiver o ambiente chamado chatbot, não precisa executar os comandos de instalação)
+abaixo. Se já tiver o ambiente chamado chatbot, não precisa executar os comandos de instalação)
 ```
 conda env list
 ```
 
-- Se o ambiente conda chatbot não existir, execute os comandos abaixo para criar o ambiente e instalar as dependências
+- Se já existir o ambiente conda, use o comando abaixo
+para ativá-lo
+```
+conda activate chatbot
+```
+
+- Se o ambiente conda chatbot não existir, execute os comandos de instalação abaixo para criar o ambiente e instalar as dependências
 
 ```
 conda create -y --name chatbot python=3.10
