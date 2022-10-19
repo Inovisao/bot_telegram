@@ -46,7 +46,7 @@ pip install python-telegram-bot pillow
 
 ### Iniciando o seu chatbot
 
-- Use o botão ao lado de 'Clone' (role para a parte de cima desta tela) para baixar para a sua máquina o arquivo compactado (.zip) contendo estes códigos em python
+- Use o botão ao lado de 'Clone' ou o botão 'Code' (role para a parte de cima desta tela) para baixar para a sua máquina o arquivo compactado (.zip) contendo estes códigos em python
 - Entre na pasta Downloads usando o comando abaixo
 ```
 cd Downloads
