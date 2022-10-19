@@ -58,7 +58,7 @@ ls *zip
 ```
 - Descompacte o arquivo usando o comando abaixo
 ```
-unzip bot_tel*
+unzip 'bot_tel*'
 ```
 - Entre na pasta descompactada
 ```
