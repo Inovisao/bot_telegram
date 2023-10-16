@@ -44,6 +44,16 @@ conda activate chatbot
 pip install python-telegram-bot pillow
 ```
 
+- Se não tiver conda na máquina, instale usando as instruções disponíveis aqui: https://docs.conda.io/projects/miniconda/en/latest/ (Use o Quick Command Line install para Linux)
+
+- Para rodar o modelo criado através do TeachableMachine, será necessária instalar também as seguintes dependências:
+
+```
+pip install tensorflow-cpu
+
+```
+
+
 ### Iniciando o seu chatbot
 
 - Use o botão ao lado de 'Clone' ou o botão 'Code' (role para a parte de cima desta tela) para baixar para a sua máquina o arquivo compactado (.zip) contendo estes códigos em python
