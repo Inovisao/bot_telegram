@@ -41,7 +41,7 @@ conda activate chatbot
 ```
 conda create -y --name chatbot python=3.10
 conda activate chatbot
-pip install python-telegram-bot pillow
+pip install python-telegram-bot==13.13 pillow
 ```
 
 - Se não tiver conda na máquina, instale usando as instruções disponíveis aqui: https://docs.conda.io/projects/miniconda/en/latest/ (Use o Quick Command Line install para Linux)
