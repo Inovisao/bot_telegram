@@ -69,6 +69,10 @@ def processa_imagem(update, context):
     # das estatísticas calculadas
     update.message.reply_text(f'Estatísticas da Imagem: valor médio dos pixels no canais R, G e B = {stat.mean}, desvio padrão = {stat.stddev}')
 
+    # Retorna para o diretório raiz do projeto para que novas
+    # imagens sejam enviadas para o bot analisar
+    os.chdir('..')
+
 
 
 # Resposta para o comando /start
